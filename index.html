@@ -1,19 +1,31 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>娜莉兔 A Minute Knowledge Tube</title>
+    <title>娜莉兔 A Minute Knowledge Tube --- 世界之最 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+   <link class="include" rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+    
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="../excanvas.js"></script><![endif]-->
+
+   
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
+        font-size: 14px;
         padding-bottom: 40px;
+		margin-left:0px;
+		background-image:url(agent/back.png);
+		background-repeat:repeat-y;
+		    font-family: "微軟正黑體",Comic Sans MS,arial,helvetica,sans-serif;
+
       }
 	  .agent
 	  {
@@ -28,9 +40,26 @@
 	  line-height:50px;
 	  border:black 2px solid;
 	  width:60px;
-
-	
+	  border-radius: 10px;
 	  }
+	  
+	  .alpha1{
+	  	padding: 10px;
+	  background-color:#FFCCCC;
+  	  filter: Alpha(Opacity=30);
+	  border-radius: 10px;
+	  }
+
+	  canvas{
+	  	position: absolute;
+	  	width: 100px;
+	  	top:500px;
+	  	left: 0px;
+
+
+	  }
+	
+	  
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -50,246 +79,346 @@
   
   </head>
 
-  
-  
-  <body>
+<body >
+
+
+		<canvas id="output"></canvas>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <button type="button" id="nav_togg_btn" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" style="color:lightgray" href="#">娜莉兔 A Minute Knowledge Tube</a>
+          <a class="brand" style="color:lightgray" href="#" >娜莉兔 --- 世界之最</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">閱讀</a></li>
-              <li><a href="#about">排行榜</a></li>
-              <li><a href="#contact">關於我們</a></li>
+              <li><a href="#" onclick="show_knowledge()" >瀏覽知識</a></li>  <!-- class="active" -->
+              <li><a href="#analysis_Modal"   role="button"  onclick="analysis_mode()" data-toggle="modal" >學習總結分析</a></li>
+              <li><a href="#about_us_Modal" role="button" onclick="show_about_us()"  data-toggle="modal">關於我們</a></li>
             </ul>
-            <form class="navbar-form pull-right">
+<!--            <form class="navbar-form pull-right">
               <input class="span2" type="text" placeholder="Email">
               <input class="span2" type="password" placeholder="Password">
               <button type="submit" class="btn">Sign in</button>
             </form>
+        -->
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div id="content" class="container" >
+
+
+
+	<!-- INDEX_PAGE  -->
+	<!-- INDEX_PAGE  -->
+	<!-- INDEX_PAGE  -->
+	<!-- INDEX_PAGE  -->
+	<!-- INDEX_PAGE  -->
+	
+    <div id="content" class="row text-center" >
+		<div class="row " id="Index_view" >
+			<div class="span6">
+			
+				<div id="Index" class="BackGroundSet" >
+					<a class="btn btn-large btn-primary" href="#"  onclick="selectAgent_mode()">Get An Agent Now! &raquo;</a>
+		 
+
+					<!--
+					<div class="text-right span4">
+						<br> 
+						<a class="btn btn-large" href="#"  onclick="s">Be Good At? &raquo;</a>   
+					</div>   -->
+				
+				</div>
+				<div class="row text-center" >
+					<br>
+					<img class="agent" width="500px" src="agent/LOGO3.png" />      		  	 			    
+				</div>
+	
+		</div>
+	</div>
+	
+
 
 	
-	
-	
-		  <!-- INDEX_PAGE  -->
-	  <!-- INDEX_PAGE  -->
-	  <!-- INDEX_PAGE  -->
-	  <!-- INDEX_PAGE  -->
-	  <!-- INDEX_PAGE  -->
+	<!-- AgentSelect  -->
+	<!-- AgentSelect  -->
+	<!-- AgentSelect  -->
+	<!-- AgentSelect  -->
+	<!-- AgentSelect  -->
 	 
-  <div class="row " id="Index_view">
-        <div class="span6">
-		<div id="Index" class="" >
- <a class="btn btn-large btn-primary" href="#"  onclick="selectAgent_mode()">Play Now &raquo;</a>
- 
-<div class="text-right span4">
- <br>
-  <a class="btn btn-large" href="#"  onclick="s">好友排行 &raquo;</a>
-  </div>
-</div>
+	<div class="row " id="AgentSelect_view">
 
-    <div class="row text-center">
-         
-		   <br>
-  <img class="agent" width="130px" src="agent/Agent-1.jpg" />      
-
-		  	 	  <img class="agent" width="200px" src="agent/Agent-2.jpg" />
-				    
-
-	     </div>
-	
-	
-</div>
-
-      </div>
-	
-	
-	
-	
-	
-	
-	  <!-- AgentSelect  -->
-	  <!-- AgentSelect  -->
-	  <!-- AgentSelect  -->
-	  <!-- AgentSelect  -->
-	  <!-- AgentSelect  -->
-	 
-  <div class="row " id="AgentSelect_view">
-
-		<div id="AgentSelect" class="" >
-          <h4>選擇助教</h4>
-PS:每個助教的個性跟擅長領域都不一樣喔!
+		<div id="AgentSelect" class="" style = "font-size:12pt">
+          <h3>認養助教</h3>
+			PS:每個助教的個性跟擅長領域都不一樣喔!
 		  </p>
-</div>
+		</div>
 
-    <div class="row text-center">
-	<div class="span6">
-          <a class="btn" href="#"  onclick="selectAgent(1)">羅波波 &raquo;</a>
-		   <br>
-  <img class="agent" width="150px" src="agent/Agent-1.jpg" />          
-</div>
-<br>
-<div class="span6">
-<a class="btn " href="#" onclick="selectAgent(2)">納莉兔 &raquo;</a>
-		  <br>
-		  	 	  <img class="agent" width="150px" src="agent/Agent-2.jpg" />
-				  
-				   
-		
-		   </div>
-	     </div>
+		<div class="row text-center">
+			<div class="span4">
+				<a class="btn " href="#" onclick="selectAgent(2)">納莉兔 &raquo;</a>  <!--GetAgent()-->
+				<br>
+				<img class="agent" width="200px" src="agent/Agent-2.png" />
+			</div>
+		<br>
+			<div class="span4">
+				<a class="btn" href="#"  onclick="selectAgent(1)">羅波波 &raquo;</a>  <!-- selectAgent(1) -->
+				<br>
+				<img class="agent" width="200px" src="agent/Agent-1.png" />          
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- getagent -->
+	<!-- getagent -->
+	<!-- getagent -->
+	<!-- getagent -->
+	<!-- getagent -->
+	
+	<div id="getagent_page" class="row text-center" >
+		<div class="row " id="getangent_page" style = "font-size:14pt; ">
+			<div class = "alpha1" ><h2>獲得一隻助教!</h2>
+			<p>請以時間內回答問題來為餵食助教!!</p>
+			<p>助教會因為你回答正確或不正確成長，</p>
+			<p>消化過後，會他會長成不同形態呦~</p>
+			</div>
+			
+			<a class="btn " href="#" onclick="show_NPC()">Next &raquo; </a>  <!-- selectAgent(2) -->
+			<img class="agent" width="250px" src="agent/Agent-2.png" />
+			
+			
+		</div>
+	</div>
+
+	
+	<!-- NPC -->
+	<!-- NPC -->
+	<!-- NPC -->
+	<!-- NPC -->
+	<!-- NPC -->
+	
+	<div id="NPC_page" class="row text-center" >
+		<div class="row " id="getangent_page" style = "font-size:14pt;">
+			<div class = "alpha1"  ><h2> Wanted!! </h2>
+			<p>請在盡可能在短時間，</p>
+			<p>讓你的助教成長成：</p>
+			<img class="agent" width="250px" src="agent/A1NPC.png" />
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<a class="btn " href="#" onclick="knowledge_mode()">Start feed it!</a>
+			
+			
+		</div>
+	</div>
+	
+	
 	
 
-
-      </div>
-
-	
 	
       <!-- Main hero unit for a primary marketing message or call to action -->
       <!-- Example row of columns -->
-      <div class="row" id="knowledge_view">
-        <div class="">
-		<div id="knowledge" style="height:150px; overflow:overlay">
-          <h4>筆記型電腦的規格</h4>
-          <p>通常現在筆記型電腦的速度都很快了，
-在沒有特殊使用需求(如打3D華麗遊戲、快速千萬筆資料處理)的狀況
-買筆電應多考慮售後服務、重量、外型、價格等其他因素，
-而不必為了看懂規格反而被商家騙得團團轉，
-反而沒選到自己想要的機型
-</p>
-</div>
-<br>
-    <div class="row text-center">
-          <p><a class="btn  btn-success" href="#" onclick="next_knowledge(1)">有用 &raquo;</a>
-          <a class="btn" href="#"  onclick="next_knowledge(2)">老梗 &raquo;</a>
-          <a class="btn" href="#"  onclick="next_knowledge(3)">不懂&raquo;</a>
-		  
-		  </p>
-	     </div>
-
-</div>
-    <div id="timer_view" class="timer">TIMER</div>
-    <div class="span4 text-right">
-          <p>
-		  <img class="agent"  width="150px" src="agent/Agent-2.jpg" />
-		 
-		  </p>
-
-		  </div>
-      </div>
 	  
-	  <!-- Question  -->
-	  <!-- Question  -->
-	  <!-- Question  -->
-	  <!-- Question  -->
-	  <!-- Question  -->
-	 
-  <div class="row " id="question_view">
-        <div class="">
-		<div id="question" class="" style="height:150px; overflow:overlay">
-          <h4>筆記型電腦的規格</h4>
-對於運算需求不高的普通使用者，現在選購筆電還需要以規格為第一考量嗎?
-</p>
-</div>
+	<!-- knowledge  -->
+	<!-- knowledge  -->
+	<!-- knowledge  -->
+	<!-- knowledge  -->
+	<!-- knowledge  -->
 
-    <div class="row text-center">
-          <p><a class="btn " href="#" onclick="ans(1)">YES &raquo;</a>
-          <a class="btn" href="#"  onclick="ans(0)">NO &raquo;</a>
-		  <P>
-          <a class="btn" href="#"  onclick="findAnswer(3)">回去找解答&raquo;</a>
-		  </p>
-		  </p>
-	     </div>
-
-</div>
-    <div id="timer_q" class="timer">TIMER</div>
-    <div class="span4 text-right">
-          <p>
-		  <img class="agent" width="150px" src="agent/Agent-2.jpg" />
-		 
-		  </p>
-
-		  </div>
-      </div>
-
-
-	  <!-- sumup  -->
-	  <!-- sumup  -->
-	  <!-- sumup  -->
-	  <!-- sumup  -->
-	  <!-- sumup  -->
-	 
-  <div class="row " id="sumup_view">
-        <div class="span6">
-		<div id="sumup" class="" style="height:150px; overflow:overlay">
-          <h2>目前積分</h2>
-          <h1 id="scores" class="text-center large">0</h1>
-
-		  </p>
-</div>
-
-    <div class="row text-center">
-          <p><a class="btn btn-large" href="#" onclick="javascript:location.reload()">繼續挑戰 &raquo;</a>
 	
-          <a class="btn btn-large" href="#"  onclick="exit()">結束遊戲 &raquo;</a>
+    <div class="row" id="knowledge_view">
+        <div class="">
+			<div id="knowledge" style="height:150px; overflow:overlay; font-size:14pt;" class="alpha1">
+			  <h4 id="knowledge_title">筆記型電腦的規格</h4>
+			  <p id="knowledge_content">通常現在筆記型電腦的速度都很快了，
+				 在沒有特殊使用需求(如打3D華麗遊戲、快速千萬筆資料處理)的狀況
+				 買筆電應多考慮售後服務、重量、外型、價格等其他因素，
+				 而不必為了看懂規格反而被商家騙得團團轉，
+				 反而沒選到自己想要的機型
+			  </p>
+			</div>
+			<br>
+			<div class="row text-center">
+				<p><a class="btn  btn-success" href="#" onclick="next_knowledge(1)">有用 &raquo;</a>
+				<a class="btn" href="#"  onclick="next_knowledge(2)">老梗 &raquo;</a>
+				<a class="btn" href="#"  onclick="next_knowledge(3)">不懂&raquo;</a>
+				</p>
+			</div>
 
-		  </p>
-	     </div>
-
-</div>
-    <div class="span4 text-right">
+		</div>
+		<!--	
+		<div id="timer_view" class="timer">TIMER</div>
+		-->
+		<div class="span4 text-right">
           <p>
-		  <img class="agent" width="150px" src="agent/Agent-2.jpg" />
+		  <img class="agent"  width="250px" src="agent/Agent-2.png" />
 		 
 		  </p>
 
-		  </div>
-      </div>
+		</div>
+    </div>
 	  
-	  
-	  
-	  
-	  
-	  
-	  	
-	  <!-- Hint  -->
-	  <!-- Hint  -->
-	  <!-- Hint  -->
-	  <!-- Hint  -->
-	  <!-- Hint  -->
+	<!-- Question  -->
+	<!-- Question  -->
+	<!-- Question  -->
+	<!-- Question  -->
+	<!-- Question  -->
 	 
-   
-  <div class="row " id="hint_view">
+	<div class="row " id="question_view">
+		<div class="">
+			<div id="question" class="alpha1" style="padding:10px; overflow:overlay; font-size:14pt;">
+				<h4>筆記型電腦的規格</h4>
+					<p>對於運算需求不高的普通使用者，現在選購筆電還需要以規格為第一考量嗎?</p>
+			</div>
+			<p></p>
+
+			<div class="row text-center">
+				<p>
+				<!--
+				<a class="btn " href="#" onclick="ans(1)">YES &raquo;</a>
+				<a class="btn" href="#"  onclick="ans(0)">NO &raquo;</a>
+				-->
+				<a class="btn " id="ans1" href="#" onclick="ans(1)">1.YES!   </a>
+				<a class="btn" id="ans2" href="#"  onclick="ans(2)">2.NO!    </a>
+				<P>
+				<a class="btn "  id="ans3" href="#" onclick="ans(3)">3. CCC  </a>
+				<a class="btn"  id="ans4" href="#"  onclick="ans(4)">4.  DDD  </a>
+				<!--
+				<a class="btn" href="#"  onclick="findAnswer(3)">回去找解答&raquo;</a>
+				-->
+				</p>
+				</p>
+			</div>
+
+		</div>
+		<div id="timer_q" class="timer">TIMER</div>
+		<div class="span4 text-right">
+			  <p>
+			  <img class="agent" width="300px" src="agent/Agent-2.png" />
+			 
+			  </p>
+
+		</div>
+    </div>
+
+
+	<!-- sumup  -->
+	<!-- sumup  -->
+	<!-- sumup  -->
+	<!-- sumup  -->
+	<!-- sumup  -->
+	 
+	<div class="row " id="sumup_view">
+	
         <div class="span6">
-		<div id="sumup" class="" style="height:150px; overflow:overlay">
-  
+			<div id="sumup" class="" style="height:150px; overflow:overlay">
+	  <h2>你總共花了</h2>
+			  <h1 id="scores" class="text-center large">0</h1>
+			  <p>秒鐘</p>
+			  </p>
+			</div>
 
-		  </p>
-</div>
-
-     <div class="span4 text-right">
+			<div class="row text-center">
+			    <p><a class="btn btn-large" href="#" onclick="knowledge_mode()">繼續挑戰 &raquo;</a>
+				<!--  <a class="btn btn-large" href="#"  onclick="exit()">結束遊戲 &raquo;</a> -->
+			    </p>
+			</div>
+		</div>
+		
+		<div class="span4 text-right">
           <p>
-		  <img class="agent" width="200px" src="agent/Agent-2.jpg" />
-		 
+			<img class="agent" width="150px" src="agent/Agent-2.png" />		 
 		  </p>
-          <a class="btn" href="#"  onclick="close_hint_mode()">Back &raquo;</a>
-		  </div>
-      </div>
+		</div>
+    </div>
+	  
+	<!-- analysis_PAGE  -->
+	<!-- analysis_PAGE  -->
+	<!-- analysis_PAGE  -->
+	<!-- analysis_PAGE  -->
+	<!-- analysis_PAGE  -->
+	<!-- Modal -->
+<div id="analysis_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+   <h2>學習總結分析</h2>
+  </div>
+  <div class="modal-body">
+   答對次數: <span id="rightANS_txt"> 0 </span>
+   <br>
+   總答題數: <span id="sum_question_txt"> 0 </span>
+	<br>
+	<img src="pie.png" />
 
+	 <div id="pie1" style="margin-top:20px; margin-left:20px; width:200px; height:200px;"></div>
+		
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+  </div>
 </div>
+
+
+
+	<!-- about_us  -->
+		<!-- about_us  -->
+			<!-- about_us  -->
+				<!-- about_us  -->
+					<!-- about_us  -->
+						<!-- Modal -->
+<div id="about_us_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+   <h2> 宜家軒 Studio 出品</h2>
+
+	<p id="info"></p> 
+  </div>
+  <div class="modal-body">
+  	<img class="agent" width="200px" src="agent/LOGO3.png" />   
+  	<br>   		  	 			
+  	一段爆肝與教育憤青的熱血故事。
+  <br> 
+  by 何宜軒 &  張小均
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+	  	
+	<!-- Hint  -->
+	<!-- Hint  -->
+	<!-- Hint  -->
+	<!-- Hint  -->
+	<!-- Hint  -->
+	
+	<div class="row " id="hint_view">
+        <div class="span6">
+			<div id="sumup" class="" style="height:150px; overflow:overlay">
+	  
+
+			  </p>
+			</div>
+
+			<div class="span4 text-right">
+			  <p>
+			  <img class="agent" width="300px" src="agent/Agent-2.png" />
+			 
+			  </p>
+			  <a class="btn" href="#"  onclick="close_hint_mode()">Back &raquo;</a>
+			</div>
+		</div>
+	</div>
 
 	  
 	  
@@ -299,12 +428,12 @@ PS:每個助教的個性跟擅長領域都不一樣喔!
       <hr>
 
       <footer>
-        <p>那妮兔 alpha0.001 &copy; 宜家軒 出品 2013</p>
+        <p>那妮兔 alpha1.0 &copy; 宜家軒 出品 2013</p>
       </footer>
 
     </div> <!-- /container -->
 
-    <!--外掛 Le javascript
+    <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
@@ -321,9 +450,783 @@ PS:每個助教的個性跟擅長領域都不一樣喔!
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
 	<script type="text/javascript" src="js/jquery.countdown.js"></script>
-<!--主程式 -->
-	<script type="text/javascript" src="js/main.js"></script>
+		<script src="js/jquery.blockUI.js"></script>
+		<script src="js/ccv.js"></script>
+		<script src="js/face.js"></script>
 
+		  <script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>	
+  <script class="include" type="text/javascript" src="js/jqplot.pieRenderer.min.js"></script>
+
+
+<script>
+var scores = 0; //積分
+var current_question = -1; //現在做的題目
+var sum_question = 0; //做幾題了
+var sum_knowledge = 0; //看幾個知識了
+var SET_sum_question = 0; //做幾題了
+var SET_sum_knowledge = 0; //看幾個知識了
+var is_hinted = 0; //是否提示過
+var agentchoose = 0;
+var rightANS = 0;
+var wrongANS = 0;
+var type = -1;
+var who = 0;
+var lastType = 0;
+var KlgData;
+var read_array  = new Array(); 
+var read_type_array  = new Array(); 
+var SET_of_klg=10;
+var current_question_ans=0;
+var c=0;
+var t=0;
+var stop = 0;
+var isFirstQ_mode = 0;
+var TIME_i=1;
+
+$(document).ready(function() { //網頁讀取完畢後 開始執行javascript
+  // Handler for .ready() called.
+setWebcam()
+//	question_mode()
+//knowledge_mode()
+//sumup_mode()
+	$("#content > div").hide(); //先隱藏所有內容
+
+	$("#Index_view").show(); //顯示歡迎頁面
+//hint_mode();
+
+getKnowledgeTOP();  //讀取世界之最題庫
+
+
+});
+
+function knowledge_mode()  //知識閱讀模式
+{
+		$('.agent').attr("src","agent/Agent-"+who+".png");
+		TIME_i = 0;
+
+	$("#content > div").hide();
+	$("#knowledge_view").show()
+	SET_sum_knowledge = 0;
+	next_knowledge();  //開始出題
+}
+
+function analysis_mode()  //學習總結
+{
+	$("#sum_question_txt").html(sum_question)
+	$("#rightANS_txt").html(rightANS)
+    
+
+
+$.jqplot('pie1',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+
+
+//console.log(plot1)
+
+
+
+
+
+
+
+
+
+//	$("#content > div").hide();
+	$("#nav_togg_btn").click()
+//	SET_sum_knowledge = 0;
+//	next_knowledge();  //開始出題
+}
+
+
+function ans(answer) //回答答案
+{
+	if(answer == current_question_ans ) //答對
+	{
+		scores = scores + 5;  //增加積分
+		rightANS = rightANS + 1;
+		agent_say("好吃好吃!!(y)");
+	}
+	else
+	{
+		agent_say("好難吃 >_<");
+		wrongANS = wrongANS + 1;
+
+	}
+	
+	window.setTimeout(next_question,1000)  //agent講話兩秒後換下一題
+	
+}
+
+
+
+function sumup_mode()  //總結模式
+{
+	TIME_i =0;
+$("#scores").html(scores)  //顯示分數
+$("#scores").html(c)  //顯示分數
+	$("#knowledge_view").hide()
+  $("#question_view").hide()
+  $("#sumup_view").show();
+}
+
+
+
+function next_question() // 出題
+{
+
+//agent_mute();
+growup();
+//	console.log(SET_sum_question)
+	if(SET_sum_question>=SET_of_klg) //做五題進入總結模式
+	{
+		sumup_mode();
+//		growup();
+		return;
+	}
+	/*else if(sum_question==10){
+		growup(rightANS);
+	}*/
+	
+	SET_sum_question++; 
+	sum_question++;
+
+	var nextq= read_array[current_question];  //題目id
+	
+//	$('#timer_q').countdown('destroy'); //設定倒數計時器
+ // 	$('#timer_q').countdown({until: "+10s",format: 'S',layout: '{sn}',  onExpiry: timer_q_stop});  //設定倒數計時器
+	
+					KlgType = read_type_array[current_question++]
+//					console.log('TTTTTTT==='+KlgType)
+					 var  Kdb = KlgData[KlgType][0].db;
+						//	console.log ('Title : '+ Kdb[nextq][0] )
+						//	console.log ('ANSWER : '+ Kdb[nextq][1] )
+							var  Kmax = Kdb.length-1
+						//	console.log ('Location : '+ Kdb[Ran_K][2] )
+						//	console.log ('more : '+ Kdb[Ran_K][3] )
+
+					 // 產生同類型其他答案
+					 /*
+					Ran_K_other = getRandomInt ( 0, Kmax);
+						console.log ('ANSWER : '+ Kdb[Ran_K_other][1] )
+					Ran_K_other = getRandomInt ( 0, Kmax);
+						console.log ('ANSWER : '+ Kdb[Ran_K_other][1] )
+					Ran_K_other = getRandomInt ( 0, Kmax);
+						console.log ('ANSWER : '+ Kdb[Ran_K_other][1] )*/
+
+						//設定答案
+
+						current_question_ans = getRandomInt(1,4);
+
+						Ran_K_other = getRandomInt ( 0, Kmax);
+						$("#ans1").html ('1.' + Kdb[Ran_K_other][1] )
+						Ran_K_other = getRandomInt ( 0, Kmax);	
+						$("#ans2").html ('2.' + Kdb[Ran_K_other][1] )
+						Ran_K_other = getRandomInt ( 0, Kmax);	
+						$("#ans3").html ('3.' + Kdb[Ran_K_other][1] )
+						Ran_K_other = getRandomInt ( 0, Kmax);	
+						$("#ans4").html ('4.' + Kdb[Ran_K_other][1] )
+
+		//				console.log( 'CQA:'+ current_question_ans)
+
+						$("#ans"+current_question_ans).html(current_question_ans+ '.' + Kdb[nextq][1]  )
+
+
+	$("#question").html('<h2>'+Kdb[nextq][0] + "? </h2>"); //設定題目
+	
+//	current_question = nextq;
+  
+	
+	
+}
+ 
+
+function growup(){	
+	
+	if (rightANS >= (wrongANS) * 2)
+	{
+		if(lastType != type || lastType>2 ){
+			type = Math.floor((Math.random()*2)+1);
+			changeIMG(type);
+			lastType = type;
+		}
+	}else if(wrongANS >= (rightANS)*2){
+		if(lastType != type  || lastType<3){
+			type = Math.floor((Math.random()*2)+3);
+			changeIMG(type);
+			lastType = type;
+		}
+	}else{
+	
+	}
+	
+	
+}
+
+function changeIMG(type){
+	if( who == 2){
+		$('.agent').attr("src","agent/NO"+type+".png");
+	}else if(who == 1){
+		$('.agent').attr("src","agent/RNO"+type+".png");
+	}
+}
+
+function countdown_stop()  //時間到
+{
+	console.log("TIME UP")
+	agent_say("快餵我!");
+	window.setTimeout(next,2000)
+	
+}
+function timer_q_stop()
+{	console.log("q_TIME UP")
+
+	agent_say("我餓了!");
+		window.setTimeout(next_question,3000)
+}
+function question_mode() //出題模式
+{
+//	growup();
+		$('.agent').attr("src","agent/Agent-"+who+".png")
+	$("#content > div").hide();
+	
+	stop = 1;
+	TIME_i = 1;
+	if(isFirstQ_mode==0) 
+	{
+		timedCount();
+		isFirstQ_mode=1;
+	}
+
+
+
+	//if(is_hinted==0)  //如果沒有提示過，就有提示的額度
+	//{
+
+		$(".agent").click(function(){
+		//開啟提示功能的滑鼠觸發
+		console.log("hint")
+		hint_mode();
+			is_hinted=1
+		})
+	//}
+		$("#knowledge_view").hide()
+	  $("#question_view").show()
+	  $("#sumup_view").hide();
+
+	SET_sum_question=0;
+	current_question=0;  
+	next_question()
+
+
+}
+
+function close_hint_mode() //關閉agent提示
+{
+$("#content > div").hide();
+  $("#question_view").show();
+    $('.agent').popover('destroy')
+}
+function hint_mode() //agent提示模式
+{
+$("#content > div").hide();
+  $("#hint_view").show();
+
+  
+  $('.agent').popover('destroy')
+
+  var texts = new Array();  //Agent簡單的對話
+  texts[0]="應該是Yes吧!!<br>No好像也可以~"
+  texts[1]="不要告訴你勒~<br>打我啊~~"
+  texts[2]="其實我只是時薪109的工讀生<br>不能要求我什麼都會吧"
+  
+  var id = Math.floor((Math.random()*2)+1);;
+$('.agent').popover({content: texts[id] , placement:'top', trigger: 'manual', html:"true" }).popover('show')
+
+  
+  
+}
+
+function next_knowledge(evaluate) //下一個知識
+{
+//	console.log(sum_knowledge%SET_of_klg )
+	if(SET_sum_knowledge==  SET_of_klg ) //知識看完了5則
+	{
+		question_mode();  //進入測驗模式
+		$('#timer_view').countdown('destroy');
+		return;
+	}
+
+
+
+//var nextq= Math.floor((Math.random()*5)+1);;
+
+						 var KlgType = getRandomInt(0,6)  
+					//	  Klgnumber = KlgData[KlgType]
+						 var  Kdb = KlgData[KlgType][0].db;
+						 var  Kmax = Kdb.length-1
+							
+						 var Ran_K = getRandomInt ( 0, Kmax);
+						 var k_title = Kdb[Ran_K][0]
+						 	if(!Kdb[Ran_K][0])
+						 	{
+						 		next_knowledge()
+						 	}
+						 var k_ans = Kdb[Ran_K][1]
+						 var k_loc = Kdb[Ran_K][2]
+						 var k_more = Kdb[Ran_K][3]
+
+//						 console.log('R_T:'+KlgType)
+
+//						 console.log('R:'+Ran_K)
+
+						 /*
+
+							console.log ('Title : '+ Kdb[Ran_K][0] )
+							console.log ('ANSWER : '+ Kdb[Ran_K][1] )
+							console.log ('Location : '+ Kdb[Ran_K][2] )
+							console.log ('more : '+ Kdb[Ran_K][3] )
+							*/
+
+// id="ans1"
+var nextq = Ran_K
+
+read_array[ SET_sum_knowledge ] = nextq
+read_type_array[ SET_sum_knowledge ] = KlgType
+//console.log(read_type_array)
+//$("#knowledge").html(knowledge_db[nextq]);
+$("#knowledge_title").html(k_title);
+
+var k_contet =  "<h2>" + k_ans+"</h2>" ;
+if(k_more) k_contet = k_contet + k_more;
+if(k_loc) k_contet = k_contet +  "&nbsp&nbsp 地點: " + k_loc;
+
+
+$("#knowledge_content").html( k_contet );
+
+$('#timer_view').countdown('destroy'); //先砍掉之前的倒數計時器
+
+  $('#timer_view').countdown({until: "+45s",format: 'S',layout: '{sn}',  onExpiry: countdown_stop});  //倒數計時器
+
+
+  sum_knowledge++;
+  SET_sum_knowledge++;
+
+//　 setTimeout("GetEmotion( )", 2000)
+
+ //agent_mute()
+}
+
+function agent_say(text) //agent無聊說話
+{
+	console.log(text)
+	$('.agent').popover('destroy')
+
+	$('.agent').popover({content: text , placement:'top', trigger: 'manual' }).popover('show')
+	setTimeout(function() {
+            $('.agent').popover('hide');
+    }, 2000);
+}
+
+function agent_mute() //agent閉嘴
+{
+	$('.agent').popover('hide');
+}
+
+
+function selectAgent(agent) //選擇agent
+{
+	who = agent;
+	$('.agent').attr("src","agent/Agent-"+agent+".png")
+
+	$("#content > div").hide();
+	$("#getagent_page").show();
+
+//question_mode();
+//knowledge_mode();
+}
+
+function selectAgent_mode()
+{
+$("#content > div").hide();
+$("#AgentSelect_view").show();
+}
+
+
+function show_knowledge()
+{
+$("#content > div").hide();
+$("#knowledge_view").show();
+$("#nav_togg_btn").click();
+}
+
+function show_about_us()
+{
+//$("#content > div").hide();
+$("#about_us_view").show();
+$("#nav_togg_btn").click();
+}
+
+
+
+function getKnowledgeTOP()
+{
+
+	$.ajax({
+	  type: "POST",
+
+	  url: "js/db.json",
+	}).done(function(datas) {
+//						  console.log(datas);
+						  KlgData = datas;
+/*
+						  KlgType = getRandomInt(0,6)  
+					//	  Klgnumber = KlgData[KlgType]
+						   Kdb = KlgData[KlgType][0].db;
+						   Kmax = Kdb.length
+							
+						   Ran_K = getRandomInt ( 0, Kmax);
+
+							console.log ('Title : '+ Kdb[Ran_K][0] )
+							console.log ('ANSWER : '+ Kdb[Ran_K][1] )
+							console.log ('Location : '+ Kdb[Ran_K][2] )
+							console.log ('more : '+ Kdb[Ran_K][3] )
+
+					 // 產生同類型其他答案
+					Ran_K_other = getRandomInt ( 0, Kmax);
+						console.log ('ANSWER : '+ Kdb[Ran_K_other][1] )
+					Ran_K_other = getRandomInt ( 0, Kmax);
+						console.log ('ANSWER : '+ Kdb[Ran_K_other][1] )
+					Ran_K_other = getRandomInt ( 0, Kmax);
+						console.log ('ANSWER : '+ Kdb[Ran_K_other][1] )
+*/
+
+
+
+
+				 
+				});
+
+
+	
+}
+
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function timedCount()
+ {
+// console.log(stop)
+	$(timer_q).html(c);
+	c=c+TIME_i;
+	t=setTimeout("timedCount()",1000);
+	if(stop == 1){
+		return;
+	}
+	
+ }
+ 
+
+function show_NPC()
+{
+
+$("#content > div").hide();
+$("#knowledge_view").hide();
+$('.agent').attr("src","agent/A"+who+"NPC.png")
+$("#NPC_page").show();
+}
+
+
+
+
+
+//WebCAM!!!
+//
+//
+//
+//
+// requestAnimationFrame shim
+function setWebcam()
+{}
+(function() {
+	var i = 0,
+		lastTime = 0,
+		vendors = ['ms', 'moz', 'webkit', 'o'];
+	
+	while (i < vendors.length && !window.requestAnimationFrame) {
+		window.requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
+		i++;
+	}
+	
+	if (!window.requestAnimationFrame) {
+		window.requestAnimationFrame = function(callback, element) {
+			var currTime = new Date().getTime(),
+				timeToCall = Math.max(0, 1000 / 60 - currTime + lastTime),
+				id = setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
+			
+			lastTime = currTime + timeToCall;
+			return id;
+		};
+	}
+}());
+
+var App = {
+	start: function(stream) {
+		App.video.addEventListener('canplay', function() {
+			App.video.removeEventListener('canplay');
+			setTimeout(function() {
+				App.video.play();
+				App.canvas.style.display = 'inline';
+				App.info.style.display = 'none';
+				App.canvas.width = App.video.videoWidth;
+				App.canvas.height = App.video.videoHeight;
+				App.backCanvas.width = App.video.videoWidth / 4;
+				App.backCanvas.height = App.video.videoHeight / 4;
+				App.backContext = App.backCanvas.getContext('2d');
+			
+//				var w = 300 / 4 * 0.8,
+//					h = 270 / 4 * 0.8;
+				var w = 300 / 4 * 0.8,
+					h = 270 / 4 * 0.8;
+			
+				App.comp = [{
+					x: (App.video.videoWidth / 4 - w) / 2,
+					y: (App.video.videoHeight / 4 - h) / 2,
+					width: w, 
+					height: h,
+				}];
+			
+				App.drawToCanvas();
+			}, 500);
+		}, true);
+		
+		var domURL = window.URL || window.webkitURL;
+		App.video.src = domURL ? domURL.createObjectURL(stream) : stream;
+	},
+	denied: function() {
+		App.info.innerHTML = 'Camera access denied!<br>Please reload and try again.';
+	},
+	error: function(e) {
+		if (e) {
+			console.error(e);
+		}
+		App.info.innerHTML = 'Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.';
+	},
+	drawToCanvas: function() {
+		requestAnimationFrame(App.drawToCanvas);
+		
+		var video = App.video,
+			ctx = App.context,
+			backCtx = App.backContext,
+			m = 4,
+			w = 4,
+			i,
+			comp;
+		
+		ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
+		
+		backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
+		
+		comp = ccv.detect_objects(App.ccv = App.ccv || {
+			canvas: App.backCanvas,
+			cascade: cascade,
+			interval: 4,
+			min_neighbors: 1
+		});
+		
+		if (comp.length) {
+			App.comp = comp;
+		}
+		
+		/*
+		for (i = App.comp.length; i--; ) {
+			ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
+		}
+		*/
+	}
+};
+
+App.glasses = new Image();
+App.glasses.src = 'glasses.png';
+
+App.init = function() {
+	App.video = document.createElement('video');
+	App.backCanvas = document.createElement('canvas');
+	App.canvas = document.querySelector('#output');
+	App.canvas.style.display = 'none';
+	App.context = App.canvas.getContext('2d');
+	App.info = document.querySelector('#info');
+	
+	navigator.getUserMedia_ = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	
+	try {
+		navigator.getUserMedia_({
+			video: true,
+			audio: false
+		}, App.start, App.denied);
+	} catch (e) {
+		try {
+			navigator.getUserMedia_('video', App.start, App.denied);
+		} catch (e) {
+			App.error(e);
+		}
+	}
+	
+	App.video.loop = App.video.muted = true;
+	App.video.load();
+
+
+
+      // save canvas image as data url (png format by default)
+//      var dataURL = 
+      // set canvasImg image src to dataURL
+      // so it can be saved as an image
+//      document.getElementById('canvasImg').src = dataURL;
+
+
+
+};
+
+App.init();
+
+
+
+
+function GetEmotion()
+{
+//console.log( App.canvas.toDataURL() );
+
+
+  $.ajax({
+        url: 'http://122.117.232.20/upd.php',
+        type: 'POST',
+        data: {
+//            type: 'base64',
+            // get your key here, quick and fast http://imgur.com/register/api_anon
+//            key: "cdf9007338b2f0b",
+            image:  App.canvas.toDataURL()
+        },
+        dataType: 'json'
+    }).success(function(imgdata) {
+      //  console.log(data);
+
+
+
+	$.ajax({
+				  type: "POST",
+				  url: "http://api.skybiometry.com/fc/faces/detect.json",
+				  data: { 
+				  	api_key : "80e0837387494e558ee429a1bde49109" ,
+				  	api_secret : "53877022e2ae473b99a10f1d22a010f9",
+				  	urls: "http://122.117.232.20/"+imgdata,
+				  	attributes: "all"
+				  }
+				}).done(function(o) {
+					console.log('smiling:'); 
+				  console.log(o.photos[0].tags[0].attributes.smiling);
+				});
+
+
+
+
+
+     //   w.location.href = data['upload']['links']['imgur_page'];
+    }).error(function(imgdata) {
+    //    console.log(imgdata);
+    //    w.close();
+
+    		$.ajax({
+				  type: "POST",
+				  url: "http://api.skybiometry.com/fc/faces/detect.json",
+				  data: { 
+				  	api_key : "80e0837387494e558ee429a1bde49109" ,
+				  	api_secret : "53877022e2ae473b99a10f1d22a010f9",
+				  	urls: "http://122.117.232.20/"+imgdata.responseText,
+				  	attributes: "all"
+				  }
+				}).done(function(o) {
+					//	  console.log(o);
+				console.log('smiling:'); 
+				 
+				  console.log(o.photos[0].tags[0].attributes.smiling);
+				});
+
+
+    });
+
+
+
+}
+
+
+
+
+var knowledge_db = new Array();
+
+
+knowledge_db[0] = "          <h4>羽衣甘藍(KALE)</h4>          羽衣甘藍(KALE)-蔬菜國王 黃綠色蔬菜之王 萬能蔬菜羽衣甘藍的療效作用：保護胃粘膜、預防癌症、動脈硬化、高血壓、胃潰瘍、十二指腸潰瘍、血栓、美肌美膚等作用。甘藍菜維他命Ｃ的含量超過任何蔬菜、有預防癌症、感冒、降低膽固醇、美肌美膚的作用。";
+
+
+knowledge_db[1] = "<h4>解構主義建築</h4>解構主義建築是一個從1980年代晚期開始的後現代建築思潮。它的特點是把整體破碎化（解構）。主要想法是對外觀的處理，通過非線性或非歐幾里得幾何的設計，來形成建築元素之間關係的變形與移位，譬如樓層和牆壁，或者結構和外廓。[1]大廈完成後的視覺外觀產生的各種解構「樣式」以刺激性的不可預測性和可控的混亂為特徵。一些解構主義的建築師受到法國哲學家德希達（Jacques Derrida）的文字和他解構想法的影響。雖然這個影響的程度仍然受到懷疑，而其他人則被重申的俄國構成主義運動中的幾何學不平衡想法所影響。";
+
+knowledge_db[2] = "<h4>雲門(Cloud Gate)</h4>雲門(Cloud Gate)，因其外形又被俗稱為「豆莢」）是一件由英國藝術家阿尼什·卡普爾所設計的公共藝術塑像作品，位於美國伊利諾州芝加哥盧普區千禧公園的AT&T廣場內，大通長廊（Chase Promenade）與麥考密克中心論壇廣場與溜冰場（McCormick Tribune Plaza & Ice Rink）之間，建造於2004年6月至2006年5月。這一作品長20米，寬13米，高10米，拱底最高處距地面約4米，重100噸。雲門雖由168塊不鏽鋼板接焊而成，但其表面非常光滑，遊客可以在其上看到被反射和扭曲的城市輪廓，但完全觀察不到接縫。此外，塑像的底部為會歪曲和重疊影像的凹形空間，被稱為「omphalos」（希臘語意為「中央」）。";
+
+
+knowledge_db[3]="<h4>貝爾格勒</h4>貝爾格勒（塞爾維亞語：Београд）是塞爾維亞首都和最大的城市，位於塞爾維亞北部薩瓦河和多瑙河匯合處，此處也是潘諾尼亞平原和巴爾幹半島的相遇處。根據塞爾維亞人口統計，貝爾格勒共有人口1,576,124（2002年）[1]，是原南斯拉夫地區最大的城市，也是僅次於伊斯坦堡、雅典和布加勒斯特的巴爾幹半島第四大城市。貝爾格勒地區最早的人類居住出現在公元前4800年溫查文明時期。如今的城市位置由凱爾特人於公元前3世紀確定，後被羅馬帝國佔領[2][3]。城市的斯拉夫語名字Beligrad（字面意思為「白城」）第一次被提及是在878年。1284年，貝爾格勒第一次成為塞爾維亞斯雷姆王國的首都。此後，它還先後成為塞爾維亞（1404年-1918年、2006年-）、南斯拉夫（1918年-2003年）首都以及塞爾維亞與蒙特內哥羅的行政、立法首都（2003年-2006年）[4]。"
+
+knowledge_db[4]="<h4>羅馬（義大利語：Roma）</h4>為義大利首都，也是國家政治、經濟、文化和交通中心，世界著名的歷史文化名城，古羅馬帝國的發祥地，因建城歷史悠久而被暱稱為「永恆之城」[1][2]。其位於義大利半島中西部，台伯河下游平原地的七座小山丘上，市中心面積有1200多平方公里。羅馬是全世界天主教會的中心，有700多座教堂與修道院，7所天主教大學，市內的梵蒂岡是天主教教宗和教廷的駐地。羅馬與佛羅倫斯同為義大利文藝復興中心[3]，現今仍保存有相當豐富的文藝復興與巴洛克風貌；1980年，羅馬的歷史城區被列為世界文化遺產[4]。"
+
+knowledge_db[5]="<h4>拿坡里</h4>拿坡里（又譯那波利、那不勒斯；義大利語：Napoli；拿坡里語：Nàpule；英語：Naples）是義大利南部的第一大城市，坎帕尼亞大區以及拿坡里省的首府。城市面積117平方公里，人口略低於100萬。拿坡里都會區有大約380萬人人口，是僅次於米蘭和羅馬的義大利第三大都會區[2]和歐洲第15大都會區[2]。拿坡里地區也是義大利人口最稠密的地方。拿坡里位於拿坡里灣的北岸，其東西兩側分別是兩個火山區域：維蘇威火山和坎皮佛萊格瑞火山區。因此，該市自古至今不斷受到火山活動和地震的威脅。拿坡里始於前600年 [3]，以其豐富的歷史、文化、藝術和美食而著稱，拿坡里歷史中心被聯合國教科文組織列為世界文化遺產。比薩餅起源於拿坡里。音樂是拿坡里文化中產生了廣泛影響的的一個重要組成部分，包括發明了浪漫吉他和曼陀林，以及對歌劇和拿波里民謠的重大貢獻。在其存在的2500餘年歷史中，大部分時間都扮演著重要角色。該市為古希臘人所創建，在「大希臘」中扮演重要角色；後來，羅馬人、諾曼人和西班牙人都在該市留下了自己的印記，也曾經是波旁王朝統治的兩西西里王國的首都，直到義大利統一。今天，拿坡里仍是繁榮的地中海港口和商業城市，高速鐵路和地鐵網伴隨著都會區的擴張。另一方面，黑手黨組織克莫拉繼續困擾著居民的生活，妨礙經濟與社會的發展。"
+
+knowledge_db[6] = "          <h4>筆記型電腦的規格</h4>          <p>通常現在筆記型電腦的速度都很快了，在沒有特殊使用需求(如打3D華麗遊戲、快速千萬筆資料處理)的狀況買筆電應多考慮售後服務、重量、外型、價格等其他因素，而不必為了看懂規格反而被商家騙得團團轉，反而沒選到自己想要的機型</p>";
+
+
+var question_db = new Array();
+question_db[0] = "<h7>蘇老師的KALB要收'吃苦耐勞，欲有所學'的學生是因為該實驗室無限量提供羽衣甘藍，讓學生預防癌症、動脈硬化、高血壓、胃潰瘍</h7>";
+question_db[1] = "<h7>解構主義的主要想法是對外觀的處理，通過非線性或非歐幾里得幾何的設計，來形成建築元素之間關係的變形與移位，譬如樓層和牆壁，或者結構和外廓。</h7>"
+question_db[2] = "<h7>雲門(Cloud Gate)是一個台灣聞名世界的表演藝術團體</h7>"
+question_db[3] ="<h7>貝爾格勒的人口在巴爾幹半島大概排第六名</h7>" 
+question_db[4] = "<h7>羅馬是文藝復興的重要據點</h7>"
+question_db[5] = "<h7>拿坡里是義大利首都，所以拿坡里不必擔心有火山</h7>";
+question_db[6] = "<h7>對於運算需求不高的普通使用者，現在選購筆電還需要以規格為第一考量嗎?</h7>";
+question_db[7] = "<h7>蘇老師的KALB要收'吃苦耐勞，欲有所學'的學生是因為該實驗室無限量提供羽衣甘藍，讓學生預防癌症、動脈硬化、高血壓、胃潰瘍</h7>";
+question_db[8] = "<h7>解構主義的主要想法是對外觀的處理，通過非線性或非歐幾里得幾何的設計，來形成建築元素之間關係的變形與移位，譬如樓層和牆壁，或者結構和外廓。</h7>"
+question_db[9] = "<h7>雲門(Cloud Gate)是一個台灣聞名世界的表演藝術團體</h7>"
+question_db[10] ="<h7>貝爾格勒的人口在巴爾幹半島大概排第六名</h7>" 
+question_db[11] = "<h7>羅馬是文藝復興的重要據點</h7>"
+question_db[12] = "<h7>拿坡里是義大利首都，所以拿坡里不必擔心有火山</h7>";
+question_db[13] = "<h7>對於運算需求不高的普通使用者，現在選購筆電還需要以規格為第一考量嗎?</h7>";
+question_db[14] = "<h7>蘇老師的KALB要收'吃苦耐勞，欲有所學'的學生是因為該實驗室無限量提供羽衣甘藍，讓學生預防癌症、動脈硬化、高血壓、胃潰瘍</h7>";
+question_db[15] = "<h7>解構主義的主要想法是對外觀的處理，通過非線性或非歐幾里得幾何的設計，來形成建築元素之間關係的變形與移位，譬如樓層和牆壁，或者結構和外廓。</h7>"
+question_db[16] = "<h7>雲門(Cloud Gate)是一個台灣聞名世界的表演藝術團體</h7>"
+question_db[17] ="<h7>貝爾格勒的人口在巴爾幹半島大概排第六名</h7>" 
+question_db[18] = "<h7>羅馬是文藝復興的重要據點</h7>"
+question_db[19] = "<h7>拿坡里是義大利首都，所以拿坡里不必擔心有火山</h7>";
+question_db[20] = "<h7>對於運算需求不高的普通使用者，現在選購筆電還需要以規格為第一考量嗎?</h7>";
+var answer_db = new Array();
+answer_db[0]="1"
+answer_db[1]="1"
+answer_db[2]="0"
+answer_db[3]="0"
+answer_db[4]="1"
+answer_db[5]="0"
+answer_db[6]="0"
+answer_db[7]="1"
+answer_db[8]="1"
+answer_db[9]="0"
+answer_db[10]="0"
+answer_db[11]="1"
+answer_db[12]="0"
+answer_db[13]="0"
+answer_db[14]="1"
+answer_db[15]="1"
+answer_db[16]="0"
+answer_db[17]="0"
+answer_db[18]="1"
+answer_db[19]="0"
+answer_db[20]="0"
+</script>
 	
   </body>
 </html>
+
+
