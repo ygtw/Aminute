@@ -481,6 +481,7 @@ var t=0;
 var stop = 0;
 var isFirstQ_mode = 0;
 var TIME_i=1;
+var T = 0;
 
 $(document).ready(function() { //網頁讀取完畢後 開始執行javascript
   // Handler for .ready() called.
@@ -641,7 +642,11 @@ growup();
 
 function growup(){	
 	
-	if ( rightANS != 0 && wrongANS != 0 && rightANS >= (wrongANS) * 2)
+	if(  rightANS == (wrongANS) * 3  && wrongANS > 2){
+			type = 3;
+			changeIMG(type);
+			sumup_mode();
+	}else if ( rightANS != 0 && wrongANS != 0 && rightANS >= (wrongANS) * 2)
 	{
 		if(lastType != type || lastType>2 ){
 			type = Math.floor((Math.random()*2)+1);
@@ -654,10 +659,6 @@ function growup(){
 			changeIMG(type);
 			lastType = type;
 		}
-	}else if(  rightANS == (wrongANS) * 3  && wrongANS == 1){
-			type = 3;
-			changeIMG(type);
-			sumup_mode();
 	}
 	
 	
@@ -665,16 +666,17 @@ function growup(){
 
 function changeIMG(type){
 	T = type;
-	if( who == 2){
-		$('.agent').attr("src","agent/NO"+type+".png");
-	}else if(who == 1){
-		$('.agent').attr("src","agent/RNO"+type+".png");
-	}else if (T=3){
+	
+	if (T=3){
 		if( who == 2){
 			$('.agent').attr("src","agent/appearA2NPC.png");
 		}else{
 			$('.agent').attr("src","agent/appearA1NPC.png");
 		}
+	}else if( who == 2){
+		$('.agent').attr("src","agent/NO"+type+".png");
+	}else if(who == 1){
+		$('.agent').attr("src","agent/RNO"+type+".png");
 	}
 }
 
