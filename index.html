@@ -491,6 +491,7 @@ setWebcam()
 	$("#content > div").hide(); //先隱藏所有內容
 
 	$("#Index_view").show(); //顯示歡迎頁面
+	
 //hint_mode();
 
 getKnowledgeTOP();  //讀取世界之最題庫
@@ -575,12 +576,12 @@ function next_question() // 出題
 //agent_mute();
 growup();
 //	console.log(SET_sum_question)
-	if(SET_sum_question>=SET_of_klg) //做十題進入總結模式
+/*	if(SET_sum_question>=SET_of_klg) //做十題進入總結模式
 	{
-		sumup_mode();
+//		sumup_mode();
 //		growup();
 		return;
-	}
+	}*/
 	/*else if(sum_question==10){
 		growup(rightANS);
 	}*/
@@ -640,22 +641,23 @@ growup();
 
 function growup(){	
 	
-	if (rightANS >= (wrongANS) * 2)
+	if ( rightANS != 0 && wrongANS != 0 && rightANS >= (wrongANS) * 2)
 	{
 		if(lastType != type || lastType>2 ){
 			type = Math.floor((Math.random()*2)+1);
 			changeIMG(type);
 			lastType = type;
 		}
-	}else if(wrongANS >= (rightANS)*2){
+	}else if( rightANS != 0 && wrongANS != 0 && wrongANS >= (rightANS)*2){
 		if(lastType != type  || lastType<3){
 			type = Math.floor((Math.random()*2)+3);
 			changeIMG(type);
 			lastType = type;
 		}
-	}else if( wrongANS >= 3 && rightANS >= (wrongANS) * 3){
+	}else if(  rightANS == (wrongANS) * 3  && wrongANS == 1){
 			type = 3;
 			changeIMG(type);
+			sumup_mode();
 	}
 	
 	
@@ -670,8 +672,9 @@ function changeIMG(type){
 	}else if (T=3){
 		if( who == 2){
 			$('.agent').attr("src","agent/appearA2NPC.png");
-		}else(who == 1){
+		}else{
 			$('.agent').attr("src","agent/appearA1NPC.png");
+		}
 	}
 }
 
@@ -691,7 +694,7 @@ function timer_q_stop()
 function question_mode() //出題模式
 {
 //	growup();
-		$('.agent').attr("src","agent/Agent-"+who+".png")
+	$('.agent').attr("src","agent/Agent-"+who+".png")
 	$("#content > div").hide();
 	
 	stop = 1;
@@ -714,7 +717,7 @@ function question_mode() //出題模式
 			is_hinted=1
 		})
 	//}
-		$("#knowledge_view").hide()
+	$("#knowledge_view").hide()
 	  $("#question_view").show()
 	  $("#sumup_view").hide();
 
