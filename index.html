@@ -205,7 +205,7 @@
 	<div id="NPC_page" class="row text-center" >
 		<div class="row " id="getangent_page" style = "font-size:14pt;">
 			<div class = "alpha1"  ><h2> Wanted!! </h2>
-			<p>請在盡可能在短時間，</p>
+			<p>請盡可能在越短的時間內，</p>
 			<p>讓你的助教成長成：</p>
 			<img class="agent" width="250px" src="agent/A1NPC.png" />
 			</div>
@@ -575,7 +575,7 @@ function next_question() // 出題
 //agent_mute();
 growup();
 //	console.log(SET_sum_question)
-	if(SET_sum_question>=SET_of_klg) //做五題進入總結模式
+	if(SET_sum_question>=SET_of_klg) //做十題進入總結模式
 	{
 		sumup_mode();
 //		growup();
@@ -747,7 +747,7 @@ $('.agent').popover({content: texts[id] , placement:'top', trigger: 'manual', ht
 function next_knowledge(evaluate) //下一個知識
 {
 //	console.log(sum_knowledge%SET_of_klg )
-	if(SET_sum_knowledge==  SET_of_klg ) //知識看完了5則
+	if(SET_sum_knowledge==  SET_of_klg ) //知識看完了10則
 	{
 		question_mode();  //進入測驗模式
 		$('#timer_view').countdown('destroy');
