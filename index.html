@@ -653,18 +653,25 @@ function growup(){
 			changeIMG(type);
 			lastType = type;
 		}
-	}else{
-	
+	}else if( wrongANS >= 3 && rightANS >= (wrongANS) * 3){
+			type = 3;
+			changeIMG(type);
 	}
 	
 	
 }
 
 function changeIMG(type){
+	T = type;
 	if( who == 2){
 		$('.agent').attr("src","agent/NO"+type+".png");
 	}else if(who == 1){
 		$('.agent').attr("src","agent/RNO"+type+".png");
+	}else if (T=3){
+		if( who == 2){
+			$('.agent').attr("src","agent/appearA2NPC.png");
+		}else(who == 1){
+			$('.agent').attr("src","agent/appearA1NPC.png");
 	}
 }
 
