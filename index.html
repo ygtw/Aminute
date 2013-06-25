@@ -976,6 +976,34 @@ function show_about_us() {
 
 
 function getKnowledgeTOP() {
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i) ? true : false;
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i) ? true : false;
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+    }
+};
+
+if(isMobile)
+{
+      url= "file:///android_asset/www/js/db.json"
+
+}
+else
+{
+      url= "js/db.json"
+}
+
 
     $.ajax({
         type: "POST",
