@@ -996,19 +996,19 @@ var isMobile = {
 
 if(isMobile)
 {
-      url= "file:///android_asset/www/js/db.json"
+      turl= "file:///android_asset/www/js/db.json"
 
 }
 else
 {
-      url= "js/db.json"
+      turl= "js/db.json"
 }
 
 
     $.ajax({
         type: "POST",
 
-        url: "js/db.json",
+        url: turl,
     }).done(function (datas) {
         //                        console.log(datas);
         KlgData = datas;
