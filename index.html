@@ -321,7 +321,7 @@
         <div class="span6">
 			<div id="sumup" class="" style="height:150px; overflow:overlay">
 		<h2>成就達成!! NPC獲得!!</h2>
-	    <h2>你總共花了</h2>
+	    <h4>你總共花了</h4>
 			  <h1 id="scores" class="text-center large">0</h1>
 			  <p>秒鐘</p>
 			  </p>
@@ -420,6 +420,29 @@
 		</div>
 	</div>
 
+	
+	
+	<!-- growup_view  -->
+	<!-- growup_view  -->
+	<!-- growup_view  -->
+	<!-- growup_view  -->
+	<!-- growup_view  -->
+
+	<div class="row " id="growup_view">
+        <div class="span6">
+			<div id="growup" class="" style="height:150px; overflow:overlay">
+	  
+			<h2>達進食量，Agent成長了!!</h2>
+			  </p>
+			</div>
+
+			<div class="span4 text-right">
+			  <p>
+			  <img class="agent" width="300px" src="agent/Agent-2.png" />
+			  </p>
+			</div>
+		</div>
+	</div>
 	  
 	  
 	  
@@ -648,18 +671,21 @@ function growup(){
 	if(  rightANS == (wrongANS) * 3  && wrongANS > 2 ){
 			type = 3;
 			changeIMG(type);
+			growup_mode();
 			sumup_mode();
 	}else if ( rightANS != 0 && wrongANS != 0 && rightANS >= (wrongANS) * 2)
 	{
 		if(lastType != type || lastType>2 ){
 			type = Math.floor((Math.random()*2)+1);
 			changeIMG(type);
+			growup_mode();
 			lastType = type;
 		}
 	}else if( rightANS != 0 && wrongANS != 0 && wrongANS >= (rightANS)*2){
 		if(lastType != type  || lastType<3){
 			type = Math.floor((Math.random()*2)+3);
 			changeIMG(type);
+			growup_mode();
 			lastType = type;
 		}
 	}
@@ -683,6 +709,14 @@ function changeIMG(type){
 		}
 	}
 }
+
+function growup_mode()
+{
+	$("#content > div").hide();
+	$("#growup_view").show();
+	window.setTimeout(close_hint_mode,1000)
+}
+
 
 function countdown_stop()  //時間到
 {
