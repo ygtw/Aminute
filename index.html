@@ -320,7 +320,8 @@
 	
         <div class="span6">
 			<div id="sumup" class="" style="height:150px; overflow:overlay">
-	  <h2>你總共花了</h2>
+		<h2>成就達成!! NPC獲得!!</h2>
+	    <h2>你總共花了</h2>
 			  <h1 id="scores" class="text-center large">0</h1>
 			  <p>秒鐘</p>
 			  </p>
@@ -335,7 +336,7 @@
 		
 		<div class="span4 text-right">
           <p>
-			<img class="agent" width="150px" src="agent/Agent-2.png" />		 
+			<img class="agent" width="300px" src="agent/Agent-2.png" />		 
 		  </p>
 		</div>
     </div>
@@ -579,7 +580,7 @@ growup();
 //	console.log(SET_sum_question)
 /*	if(SET_sum_question>=SET_of_klg) //做十題進入總結模式
 	{
-//		sumup_mode();
+		sumup_mode();
 //		growup();
 		return;
 	}*/
@@ -642,7 +643,9 @@ growup();
 
 function growup(){	
 	
-	if(  rightANS == (wrongANS) * 3  && wrongANS > 2){
+	console.log(rightANS);
+	console.log(wrongANS);
+	if(  rightANS == (wrongANS) * 3  && wrongANS > 2 ){
 			type = 3;
 			changeIMG(type);
 			sumup_mode();
@@ -665,18 +668,19 @@ function growup(){
 }
 
 function changeIMG(type){
-	T = type;
-	
-	if (T=3){
+	console.log(T);
+	if (type===3){
 		if( who == 2){
 			$('.agent').attr("src","agent/appearA2NPC.png");
 		}else{
 			$('.agent').attr("src","agent/appearA1NPC.png");
 		}
-	}else if( who == 2){
+	}else{
+		if( who == 2){
 		$('.agent').attr("src","agent/NO"+type+".png");
-	}else if(who == 1){
+		}else if(who == 1){
 		$('.agent').attr("src","agent/RNO"+type+".png");
+		}
 	}
 }
 
