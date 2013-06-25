@@ -328,12 +328,14 @@
 			</div>
 
 			<div class="row text-center">
-			    <p><a class="btn btn-large" href="#" onclick="knowledge_mode()">繼續挑戰 &raquo;</a>
+			    <!-- <p><a class="btn btn-large" href="#" onclick="knowledge_mode()">再挑戰一次 &raquo;</a> -->
+				<p><a class="btn btn-large" href="#" value="refresh" onclick="location.reload()">再挑戰一次 &raquo;</a>
 				<!--  <a class="btn btn-large" href="#"  onclick="exit()">結束遊戲 &raquo;</a> -->
 			    </p>
 			</div>
 		</div>
-		
+		</br>
+		</br>
 		<div class="span4 text-right">
           <p>
 			<img class="agent" width="300px" src="agent/Agent-2.png" />		 
@@ -671,7 +673,7 @@ function growup(){
 	if(  rightANS == (wrongANS) * 3  && wrongANS > 2 ){
 			type = 3;
 			changeIMG(type);
-			growup_mode();
+			//growup_mode();
 			sumup_mode();
 	}else if ( rightANS != 0 && wrongANS != 0 && rightANS >= (wrongANS) * 2)
 	{
@@ -695,7 +697,7 @@ function growup(){
 
 function changeIMG(type){
 	console.log(T);
-	if (type===3){
+	if (type==3){
 		if( who == 2){
 			$('.agent').attr("src","agent/appearA2NPC.png");
 		}else{
@@ -714,7 +716,7 @@ function growup_mode()
 {
 	$("#content > div").hide();
 	$("#growup_view").show();
-	window.setTimeout(close_hint_mode,1000)
+	window.setTimeout(close_hint_mode,1500)
 }
 
 
