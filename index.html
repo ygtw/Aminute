@@ -711,7 +711,7 @@ function growup() {
     console.log(rightANS);
     console.log(wrongANS);
     if (rightANS == (wrongANS) * 3 && wrongANS > 2) {
-        type = 3;
+        type = 999;
         changeIMG(type);
         //growup_mode();
         console.log('type = ' + type)
@@ -741,7 +741,7 @@ function growup() {
 
 function changeIMG(type) {
     console.log(T);
-    if (type == 3) {
+    if (type == 999) {
         if (who == 2) {
             $('.agent').attr("src", "agent/appearA2NPC.png");
         } else {
