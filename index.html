@@ -463,6 +463,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/db.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-transition.js"></script>
     <script src="js/bootstrap-alert.js"></script>
@@ -976,6 +977,8 @@ function show_about_us() {
 
 
 function getKnowledgeTOP() {
+
+/*
 var isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i) ? true : false;
@@ -1003,14 +1006,14 @@ else
       turl= "js/db.json"
 }
 
+*/
+//    $.ajax({
+   //     type: "POST",
 
-    $.ajax({
-        type: "POST",
-
-        url: turl,
-    }).done(function (datas) {
+ //       url: turl,
+//    }).done(function (datas) {
         //                        console.log(datas);
-        KlgData = datas;
+  //      KlgData = datas;
         /*
                           KlgType = getRandomInt(0,6)  
                     //    Klgnumber = KlgData[KlgType]
@@ -1036,9 +1039,10 @@ else
 
 
 
-    });
+//    });  
 
 
+KlgData = DBJS
 
 }
 
